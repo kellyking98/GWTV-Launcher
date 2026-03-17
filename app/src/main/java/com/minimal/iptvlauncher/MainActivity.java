@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
         try {
             // Use explicit activity name for GWTV
             Intent launchIntent = new Intent();
-            launchIntent.setClassName("com.haxapps.smart405", "com.haxapps.smart405.view.activity.ScreenTypeActivity");
+            launchIntent.setClassName("com.haxapps.smart405", "com.haxapps.smart405.view.activity.NewDashboardActivity");
             launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(launchIntent);
         } catch (Exception e) {
