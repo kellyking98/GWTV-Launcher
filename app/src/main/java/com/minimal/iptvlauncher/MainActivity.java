@@ -70,13 +70,9 @@ public class MainActivity extends Activity {
     }
 
     private boolean isAppInstalled(String packageName) {
-        try {
-            getPackageManager().getPackageInfo(packageName, 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
+    Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packageName);
+    return launchIntent != null;
+}
 
     private void launchIPTV() {
         try {
