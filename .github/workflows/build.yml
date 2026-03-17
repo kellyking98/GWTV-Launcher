@@ -6,6 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
     - name: Checkout code
@@ -32,8 +35,21 @@ jobs:
     - name: Build APK
       run: ./gradlew assembleRelease --no-daemon
 
-    - name: Upload APK
+    - name: Sign APK with Debug Key
+      run: |
+        # Generate a debug keystore
+        keytool -genkey -v -keystore debug.keystore -alias androiddebugkey \
+          -keyalg RSA -keysize 2048 -validity 10000 -storepass android \
+          -keypass android -dname "CN=Android Debug,O=Android,C=US"
+        
+        # Sign the APK
+        $ANDROID_HOME/build-tools/34.0.0/apksigner sign --ks debug.keystore \
+          --ks-key-alias androiddebugkey --ks-pass pass:android \
+          --key-pass pass:android --out app/build/outputs/apk/release/app-release-signed.apk \
+          app/build/outputs/apk/release/app-release-unsigned.apk
+
+    - name: Upload Signed APK
       uses: actions/upload-artifact@v4
       with:
         name: gwtv-launcher-apk
-        path: app/build/outputs/apk/release/app-release-unsigned.apk
+        path: app/build/outputs/apk/release/app-release-signed.apk
