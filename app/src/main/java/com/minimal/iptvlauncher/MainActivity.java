@@ -71,9 +71,19 @@ public class MainActivity extends Activity {
 
     private boolean isAppInstalled(String packageName) {
     try {
+        // Use the same method that works for launching
+        Intent intent = new Intent();
+        intent.setClassName(packageName, packageName + ".view.activity.ScreenTypeActivity");
+        
+        // Check if this intent can be resolved
+        if (getPackageManager().resolveActivity(intent, 0) != null) {
+            return true;
+        }
+        
+        // Fallback: try getPackageInfo
         getPackageManager().getPackageInfo(packageName, 0);
         return true;
-    } catch (PackageManager.NameNotFoundException e) {
+    } catch (Exception e) {
         return false;
     }
 }
