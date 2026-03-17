@@ -39,7 +39,3 @@
         android:layout_marginTop="40dp" />
 
 </LinearLayout>
-        android:textColor="#66FFFFFF"
-        android:layout_marginTop="40dp" />
-
-</LinearLayout>
