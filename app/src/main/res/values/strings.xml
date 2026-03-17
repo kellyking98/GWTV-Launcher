@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GWTV Launcher</string>
+    <string name="launch_gwtv">Launch GWTV</string>
+    <string name="wifi_settings">WiFi Settings</string>
+    <string name="gwtv_ready">GWTV App: Ready</string>
+    <string name="gwtv_not_installed">GWTV App: Not Installed</string>
+</resources>
