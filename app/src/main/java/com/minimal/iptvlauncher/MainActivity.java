@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 
     private static final String PREFS_NAME = "IPTVLauncherPrefs";
     private static final String PREF_IPTV_PACKAGE = "iptv_package_name";
-    private static final String DEFAULT_IPTV_PACKAGE = "com.andyhax.haxsplash";
+    private static final String DEFAULT_IPTV_PACKAGE = "com.haxapps.smart405";
 
     private String iptvPackageName;
     private TextView statusText;
