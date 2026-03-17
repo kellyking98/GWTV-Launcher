@@ -7,15 +7,7 @@
     android:background="@drawable/launcher_background"
     android:padding="40dp">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GWTV Launcher"
-        android:textSize="48sp"
-        android:textColor="#FFFFFFFF"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
+    
 
     <TextView
         android:id="@+id/statusText"
@@ -30,7 +22,7 @@
         android:id="@+id/launchIPTVButton"
         android:layout_width="400dp"
         android:layout_height="80dp"
-        android:text="Launch GWTV"
+        android:text="GWTV"
         android:textSize="28sp"
         android:textColor="#FFFFFFFF"
         android:background="@drawable/button_background"
@@ -52,7 +44,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="v1.0"
+        android:text="v2.0"
         android:textSize="14sp"
         android:textColor="#66FFFFFF"
         android:layout_marginTop="40dp" />
