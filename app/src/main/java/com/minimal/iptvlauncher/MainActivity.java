@@ -70,23 +70,25 @@ public class MainActivity extends Activity {
     }
 
     private boolean isAppInstalled(String packageName) {
-    Intent launchIntent = getPackageManager().getLaunchIntentForPackage(packageName);
-    return launchIntent != null;
+    try {
+        getPackageManager().getPackageInfo(packageName, 0);
+        return true;
+    } catch (PackageManager.NameNotFoundException e) {
+        return false;
+    }
 }
 
     private void launchIPTV() {
-        try {
-            Intent launchIntent = getPackageManager().getLaunchIntentForPackage(iptvPackageName);
-            if (launchIntent != null) {
-                startActivity(launchIntent);
-            } else {
-                Toast.makeText(this, "GWTV app not found. Please install it first.", Toast.LENGTH_LONG).show();
-                updateStatusText();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Error launching GWTV: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+    try {
+        // Use explicit activity name for GWTV
+        Intent launchIntent = new Intent();
+        launchIntent.setClassName("com.haxapps.smart405", "com.haxapps.smart405.view.activity.ScreenTypeActivity");
+        launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(launchIntent);
+    } catch (Exception e) {
+        Toast.makeText(this, "Error launching GWTV: " + e.getMessage(), Toast.LENGTH_LONG).show();
     }
+}
 
     private void openWiFiSettings() {
         try {
